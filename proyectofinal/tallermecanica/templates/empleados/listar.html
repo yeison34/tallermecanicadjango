@@ -1,0 +1,49 @@
+{%extends "index.html"%}
+{%block titulo%}Empleados/Listado Empleados{%endblock%}
+{%block contenido %}
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Listado de Empleados
+        <div style="display:inline-block;float:right;">
+            <a class="btn btn-success" href="/insertarempleado/">Agregar Empleado</a> 
+        </div>     
+    </div>
+    <div class="card-body ">
+        <table id="datatablesSimple" class="">
+            <thead>
+                <tr>
+                    <th>Tipo Identificacion</th>
+                    <th>Cedula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Ciudad</th>
+                    <th>Telefono</th>
+                    <th>Correo</th>
+                    <th>Fecha Ingreso</th>
+                    <th>Especialidad</th>
+                    <th>Sueldo</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in datos%}
+                <tr>
+                    <td>{{i.idtipoidentificacion.nombre}}</td>
+                    <td>{{i.cedula}}</td>
+                    <td>{{i.nombre}}</td>
+                    <td>{{i.apellido}}</td>
+                    <td>{{i.idciudad.nombre}}</td>
+                    <td>{{i.telefono}}</td>
+                    <td>{{i.correo}}</td>
+                    <td>{{i.fechaingreso}}</td>
+                    <td>{{i.idespecialidad.nombre}}</td>
+                    <td>{{i.idespecialidad.sueldo}}</td>
+                    <td><a class="btn btn-primary" href="/editarempleado/{{i.id}}">Editar</a>&nbsp;<a class="btn btn-danger" href="/eliminarempleado/{{i.id}}">Eliminar</a>&nbsp;<a class="btn btn-secondary" href="/asignarvehiculos/{{i.id}}">Asignar Vehiculos</a></td>
+                </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

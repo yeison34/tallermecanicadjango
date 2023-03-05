@@ -1,0 +1,37 @@
+{%extends "index.html"%}
+{%block titulo%}Asignaciones/Listado Asignaciones{%endblock%}
+{%block contenido %}
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="fas fa-table me-1"></i>
+        Listado de Asignaciones    
+    </div>
+    <div class="card-body">
+        <table id="datatablesSimple">
+            <thead>
+                <tr>
+                    <th>Responsable</th>
+                    <th>Tipo Vehiculo</th>
+                    <th>Placa</th>
+                    <th>Modelo</th>
+                    <th>Marca</th>
+                    <th>Cliente</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for i in asignaciones%}
+                    <tr>
+                        <td>{{i.empleadovehiculo.nombre}}</td>
+                        <td>{{i.vehiculoasignado.idtipovehiculo.nombre}}</td>
+                        <td>{{i.vehiculoasignado.placa}}</td>
+                        <td>{{i.vehiculoasignado.modelo}}</td>
+                        <td>{{i.vehiculoasignado.marca}}</td>
+                        <td>{{i.vehiculoasignado.cedula.nombre}} {{i.vehiculoasignado.cedula.apellido}}</td>
+                    </tr>
+                {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</div>
+{%endblock%}

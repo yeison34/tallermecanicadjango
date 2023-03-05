@@ -1,0 +1,112 @@
+{%extends "index.html"%}
+{%block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-lg-7">
+            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                <div class="card-header"><h3 class="text-center font-weight-light my-4">Registro de Clientes</h3></div>
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="form-floating mb-3 mb-md-0">
+                                    <div class="select">
+                                        <label for="inputFirstName">Tipo de Identificacion</label>
+                                        <div class="input-group mb-3">
+                                            <select id="" name="idtipoidentificacion" class="form-control form-select" aria-label="">
+                                                <option>Seleccionar</option>
+                                                {%for i in datos%}
+                                                    <option value="{{i.id}}">{{i.nombre}}</option>
+                                                {%endfor%}
+                                            </select>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="">Cedula</label>
+                                    <input class="form-control" name="cedula" id="" type="text" placeholder="" />    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="">Nombre</label>
+                                    <input class="form-control" name="nombre" id="" type="text" placeholder="" />    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="">Apellido</label>
+                                    <input class="form-control" name="apellido" id="" type="text" placeholder="" />    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="">Telefono</label>
+                                    <input class="form-control" name="telefono" id="" type="text" placeholder="" />    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="">Dirección</label>
+                                    <input class="form-control" name="direccion" id="" type="text" placeholder="" />    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <div class="select">
+                                        <label for="inputFirstName">Ciudad</label>
+                                        <div class="input-group mb-3">
+                                            <select id="" name="idciudad" class="form-control form-select" aria-label="">
+                                                <option>Seleccionar</option>
+                                                {%for i in ciudades%}
+                                                    <option value="{{i.id}}">{{i.nombre}}</option>
+                                                {%endfor%}
+                                            </select>
+                                        </div>
+                                    </div> 
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <label for="">Correo</label>
+                                    <input class="form-control" name="correo" id="" type="text" placeholder="" />    
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form">
+                                    <div class="select">
+                                        <label for="inputFirstName">Especialidad</label>
+                                        <div class="input-group mb-3">
+                                            <select id="" name="idespecialidad" class="form-control form-select" aria-label="">
+                                                <option>Seleccionar</option>
+                                                {%for i in especialidades%}
+                                                    <option value="{{i.id}}">{{i.nombre}}</option>
+                                                {%endfor%}
+                                            </select>
+                                        </div>
+                                    </div> 
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="mt-4 mb-0">
+                            <div class="d-grid"><button type="submit" class="btn btn-primary" >Registrar</button></div>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="card-footer text-center py-3">
+                    <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
