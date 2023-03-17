@@ -56,3 +56,8 @@ class asignarvehiculo(models.Model):
     empleadovehiculo=models.ForeignKey(empleado,on_delete=models.CASCADE,null=True) 
     vehiculoasignado=models.ForeignKey(vehiculo,on_delete=models.CASCADE)    
     fechasignacion=models.DateField(default=datetime.now())
+    
+class usuarios(models.Model):
+    id=models.AutoField(primary_key=True) 
+    usuario=models.CharField(max_length=300)
+    clave=models.CharField(max_length=300)   

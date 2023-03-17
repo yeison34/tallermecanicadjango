@@ -18,8 +18,8 @@ from django.urls import path
 from tallermecanica import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
-    path('home/', views.home),
+    path('', views.login),
+    path('home/', views.listadoclientes),
     path('listadoclientes/', views.listadoclientes),
     path('insertar/', views.insertar),
     path('eliminar/<int:ide>', views.eliminar),
@@ -34,4 +34,6 @@ urlpatterns = [
     path('editarempleado/<int:ide>', views.editarempleado),
     path('asignarvehiculos/<int:id>', views.asignarvehiculos),
     path('listadoasignaciones/', views.listadoasignaciones),
+    path('login/', views.login),
+    path('cerrar/', views.cerrar),
 ]

@@ -1,8 +1,11 @@
 from django.shortcuts import render,redirect
-from .models import cliente,tipoidentificacion,ciudad,vehiculo,tipovehiculo,empleado,especialidad,asignarvehiculo
+from .models import cliente,tipoidentificacion,ciudad,vehiculo,tipovehiculo,empleado,especialidad,asignarvehiculo,usuarios
+from django.contrib.auth.decorators import login_required
+
 
 def home(request):
     return render(request,'index.html')
+
 
 def listadoclientes(request):
     datos=cliente.objects.all
@@ -12,6 +15,7 @@ def eliminar(request,ide):
     data=cliente.objects.get(id=ide)
     data.delete()
     return redirect("/listadoclientes/")
+
 
 def insertar(request):
     if request.POST:
@@ -53,6 +57,7 @@ def editar(request,ide):
     ciudades=ciudad.objects.all
     return render(request,'clientes/editar.html',{'clienteeditar':edicioncliente,'datos':datos,'ciudades':ciudades})    
 
+
 def listadovehiculos(request):
     datos=vehiculo.objects.all
     return render(request,'vehiculos/listar.html',{'datos':datos})
@@ -61,6 +66,7 @@ def eliminarvehiculo(request,ide):
     data=vehiculo.objects.get(id=ide)
     data.delete()
     return redirect("/listadovehiculos/")
+
 
 def insertarvehiculo(request):
     print(request)
@@ -82,6 +88,7 @@ def insertarvehiculo(request):
     ciudades=ciudad.objects.all
     return render(request,'vehiculos/insertar.html',{'datos':datos,'ciudades':ciudades})
 
+
 def editarvehiculo(request,ide):
     edicionvehiculo=vehiculo.objects.get(id=ide)
     if request.POST:
@@ -100,6 +107,7 @@ def editarvehiculo(request,ide):
     datos=tipovehiculo.objects.all
     ciudades=ciudad.objects.all
     return render(request,'vehiculos/editar.html',{'vehiculoeditar':edicionvehiculo,'datos':datos,'ciudades':ciudades})    
+
 
 def listadoempleados(request):
     datos=empleado.objects.all
@@ -133,6 +141,7 @@ def insertarempleado(request):
     especialidades=especialidad.objects.all
     datos=tipoidentificacion.objects.all
     return render(request,'empleados/insertar.html',{'datos':datos,'ciudades':ciudades,"especialidades":especialidades})
+
 
 def editarempleado(request,ide):
     editarempleados=empleado.objects.get(id=ide)
@@ -171,6 +180,7 @@ def asignarvehiculos(request,id):
     vehiculos=vehiculo.objects.all
     return render(request,'asignarvehiculos/insertar.html',{"vehiculos":vehiculos,"empleado":empleadoasignar})
 
+
 def listadoasignaciones(request):
     asignaciones=asignarvehiculo.objects.all
     if request.POST:
@@ -178,3 +188,16 @@ def listadoasignaciones(request):
         vehiculoasignado=vehiculoelejido
         return redirect("/listadoasignaciones/")
     return render(request,'asignarvehiculos/listar.html',{"asignaciones":asignaciones})    
+
+def carrusel(request):
+    return render(request,"paginas/carrusel.html")
+
+def login(request):
+    if request.POST:
+        logear=usuarios.objects.filter(usuario=request.POST["usuario"],clave=request.POST["contrasena"])
+        if logear.count()!=0:
+          return redirect("/home/")  
+    return render(request,"registro/login.html")
+
+def cerrar(request):
+    return redirect("/login/")

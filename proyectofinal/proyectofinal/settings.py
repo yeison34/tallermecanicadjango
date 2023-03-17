@@ -120,7 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATICFILES_DIRS=['D:\\electiva_backend\\proyectodjango\\css','D:\\electiva_backend\\proyectodjango\\js','D:\\electiva_backend\\proyectodjango\\assets']
+STATICFILES_DIRS=['D:\\electiva_backend\\proyectodjango\\css','D:\\electiva_backend\\proyectodjango\\js','D:\\electiva_backend\\proyectodjango\\assets','D:\\electiva_backend\\proyectodjango\\imagenes']
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')

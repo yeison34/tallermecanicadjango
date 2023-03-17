@@ -1,0 +1,50 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        
+        <link rel="stylesheet" href="{% static '/styles.css' %}">
+    </head>
+    <body style="background:#DED105">
+        <br><br><br><br>
+        <div style="display:flex;justify-content:center;">
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <center><h2>Card Service</h2></center>
+                </div>
+                <div class="card-body" style="background:#F0EFE4;">
+                    <form method="post" action="/login/" style="width:400px; padding:10px 0px;">
+                        <!-- Email input -->
+                        {% csrf_token %}
+                        <div class="form-outline mb-4">
+                        <input type="text" id="usuario" name="usuario"class="form-control" />
+                        <label class="form-label" for="form2Example1">Usuario</label>
+                        </div>
+                    
+                        <!-- Password input -->
+                        <div class="form-outline mb-4">
+                        <input type="password" id="contrasena" name="contrasena"class="form-control" />
+                        <label class="form-label" for="form2Example2">Contraseña</label>
+                        </div>
+                    
+                        <button type="submit" class="btn btn-primary btn-block mb-4">Iniciar Sesion</button>
+                        
+                    </form>
+                </div>
+                <div class="card-footer bg-dark text-white">
+                    <center><small>Taller Mecanica</small></center>
+                </div>    
+            </div>
+            
+        </div>
+</body>
+</html>

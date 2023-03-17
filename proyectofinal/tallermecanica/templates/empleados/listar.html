@@ -1,12 +1,13 @@
 {%extends "index.html"%}
 {%block titulo%}Empleados/Listado Empleados{%endblock%}
 {%block contenido %}
+{%load static%}
 <div class="card mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
         Listado de Empleados
         <div style="display:inline-block;float:right;">
-            <a class="btn btn-success" href="/insertarempleado/">Agregar Empleado</a> 
+            <a href="/insertarempleado/"><button class="btn btn-success">Agregar Empleados</button></a> 
         </div>     
     </div>
     <div class="card-body ">
@@ -39,11 +40,15 @@
                     <td>{{i.fechaingreso}}</td>
                     <td>{{i.idespecialidad.nombre}}</td>
                     <td>{{i.idespecialidad.sueldo}}</td>
-                    <td><a class="btn btn-primary" href="/editarempleado/{{i.id}}">Editar</a>&nbsp;<a class="btn btn-danger" href="/eliminarempleado/{{i.id}}">Eliminar</a>&nbsp;<a class="btn btn-secondary" href="/asignarvehiculos/{{i.id}}">Asignar Vehiculos</a></td>
+                    <td><a class="btn btn-primary" href="/editarempleado/{{i.id}}">Editar</a></td>
+                    <td><a class="btn btn-danger" href="/eliminarempleado/{{i.id}}">Eliminar</a></td>
+                    <td><a class="btn btn-secondary" href="/asignarvehiculos/{{i.id}}">Asignar</a></td>
                 </tr>
                 {%endfor%}
             </tbody>
         </table>
     </div>
 </div>
+
+  
 {%endblock%}
